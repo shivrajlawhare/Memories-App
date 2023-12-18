@@ -1,7 +1,8 @@
 import React from "react";
 import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@material-ui/core';
-import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt'
-import ThumbUpAltOutlined from '@material-ui/icons/ThumbUpAlt'
+import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
+import ThumbUpAltOutlinedIcon from '@material-ui/icons/ThumbUpAltOutlined'
+
 
 import DeleteIcon from '@material-ui/icons/Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
@@ -18,16 +19,15 @@ const Post = ({post, setCurrentId}) => {
 
     const Likes = () => {
         if (post.likes.length > 0) {
-            console.log(user?.result)
-            return post.likes.find((like) => like === (user?.result?.sub || user?.result?._id))
+            return post.likes.find((like) => like === (user?.result?._id))
             ? (
                 <><ThumbUpAltIcon fontSize="small" />&nbsp;{post.likes.length > 2 ? `You and ${post.likes.length - 1} others` : `${post.likes.length} like${post.likes.length > 1 ? 's' : ''}` }</>
             ) : (
-                <><ThumbUpAltOutlined fontSize="small" />&nbsp;{post.likes.length} {post.likes.length === 1 ? 'Like' : 'Likes'}</>
+                <><ThumbUpAltOutlinedIcon fontSize="small" />&nbsp;{post.likes.length} {post.likes.length === 1 ? 'Like' : 'Likes'}</>
             );
         }
 
-        return <><ThumbUpAltOutlined fontSize="small" />&nbsp;Like</>;
+        return <><ThumbUpAltOutlinedIcon fontSize="small" />&nbsp;Like</>;
     };
 
     return(
@@ -57,7 +57,7 @@ const Post = ({post, setCurrentId}) => {
                 <Button size="small" color="primary" disabled={!user?.result} onClick={() => dispatch(likePosts(post._id))} >
                     <Likes />
                 </Button>
-                {(user?.result?.googleId === post.creator || user?.result?._id === post.creator) && 
+                {(user?.result?._id === post.creator) && 
                 <Button size="small" color="primary" onClick={() => dispatch(deletePost(post._id))} >
                     <DeleteIcon fontSize="small"/>
                     Delete
