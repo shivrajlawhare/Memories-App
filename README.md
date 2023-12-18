@@ -1,2 +1,3 @@
 # Memories-App
-MERN-Stack Project
+Social Media MERN Application
+
