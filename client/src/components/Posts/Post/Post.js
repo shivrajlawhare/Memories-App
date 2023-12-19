@@ -36,7 +36,7 @@ const Post = ({post, setCurrentId}) => {
             <div className={classes.overlay} ></div>
             <Typography variant="h6"  >{post.nameS}</Typography>
             <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
-            {(user?.result?.googleId === post.creator || user?.result?._id === post.creator) && 
+            {(user?.result?._id === post.creator) && 
             <div className={classes.overlay2}>
                 <Button 
                     style={{color: 'white'}} 
