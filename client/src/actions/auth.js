@@ -12,6 +12,18 @@ export const signin = (formData, history) => async(dispatch) => {
     }
 }
 
+export const signinGoogle = (accessToken, history) => async (dispatch)=>{
+    try{
+        // login user
+        const {data} = await api.signInGoogle(accessToken)
+
+        dispatch({type : AUTH, data})
+        history("/")
+    }catch(err){
+        console.log(err)
+    }
+}
+
 export const signup = (formData, history) => async(dispatch) => {
     try {
         // login user
@@ -20,5 +32,18 @@ export const signup = (formData, history) => async(dispatch) => {
         history('/');
     } catch (error) {
         console.log(error);
+    }
+}
+
+export const signupGoogle = (accessToken, history) => async (dispatch)=>{
+    try{
+        // signup user
+
+        const {data} = await api.signUpGoogle(accessToken)
+
+        dispatch({type : AUTH, data})
+        history("/")
+    }catch(err){
+        console.log(err)
     }
 }

@@ -21,6 +21,13 @@ export const deletePosts = (id) => API.delete(`/posts/${id}`);
 export const likePosts = (id) => API.patch(`/posts/${id}/likePost`);
 
 export const signIn = (formData) => API.post('/user/signin', formData)
+export const signInGoogle = (accessToken) => API.post("/user/signin", {
+    googleAccessToken: accessToken
+})
+
 export const signUp = (formData) => API.post('/user/signup', formData)
+export const signUpGoogle = (accessToken) => API.post("/user/signup", {
+    googleAccessToken: accessToken
+})
 
 
