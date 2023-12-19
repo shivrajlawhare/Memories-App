@@ -1,10 +1,9 @@
 import axios from "axios";
 
 
-// const url = 'https://social-media-mern-application.vercel.app/posts';
-// const url = 'https://memories-app-server-4q0c.onrender.com/posts';
-// const url = 'http://localhost:5000/posts';
+
 const API = axios.create({ baseURL: 'http://localhost:5000'})
+
 
 API.interceptors.request.use((req) => {
     if(localStorage.getItem('profile')){
